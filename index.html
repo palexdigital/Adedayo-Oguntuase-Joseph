@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adedayo Oguntuase Joseph | Digital Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Updated Color Palette */
+            --bg-top: #0a1128; /* Dark Navy Blue for top curved section */
+            --bg-main: #030712; /* Near-black background */
+            --card-bg: #111827; /* Dark Blue/Gray for card container */
+            --blue-accent: #1d4ed8; /* Vibrant dark blue accent for borders/gradients */
+            --text-primary: #FFFFFF; /* Primary White text */
+            --text-secondary: #D1D5DB; /* Soft White/Light Gray text */
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-main);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Full Screen Responsive Container */
+        .card-container {
+            width: 100vw;
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: url('background.jpg') center/contain no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Curved Top Section */
+        .top-section {
+            width: 100%;
+            height: 25vh;
+            min-height: 160px;
+            max-height: 220px;
+            background-color: transparent;
+            border-bottom-left-radius: 50% 30px;
+            border-bottom-right-radius: 50% 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+            padding-bottom: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Profile Picture Wrapper */
+        .avatar-wrapper {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            padding: 3px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            margin-bottom: -50px;
+            z-index: 2;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--bg-main);
+        }
+
+        /* Main Content Section */
+        .content-section {
+            width: 100%;
+            max-width: 480px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px 24px;
+            text-align: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Header Info */
+        .header-info {
+            width: 100%;
+        }
+
+        .person-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .person-title {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        /* Action Buttons Container */
+        .action-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: var(--blue-accent);
+            color: var(--white);
+            border: 1px solid var(--blue-accent);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #1e40af;
+            border-color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(29, 78, 216, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* Business Feature Card */
+        .business-card {
+            width: 100%;
+            padding: 20px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .business-card:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .company-logo-frame {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 1px solid var(--blue-accent);
+            padding: 2px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .company-logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .business-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .business-description {
+            font-size: 0.72rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Social Action Icons Grid */
+        .icon-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            gap: 6px;
+        }
+
+        .circle-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .circle-icon:active {
+            transform: scale(0.92);
+        }
+
+        .circle-icon svg {
+            width: 19px;
+            height: 19px;
+            fill: var(--bg-main);
+        }
+
+        .icon-label {
+            font-size: 0.58rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            text-decoration: none;
+            z-index: 99;
+        }
+
+        .floating-whatsapp svg {
+            width: 26px;
+            height: 26px;
+            fill: #FFFFFF;
+        }
+
+        /* Credits Footer */
+        .credits-footer {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .credits-link {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .credits-link:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="top-section">
+            <div class="avatar-wrapper">
+                <img src="pfp.png" alt="Adedayo Oguntuase Joseph" class="avatar-img">
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="header-info">
+                <h1 class="person-name">Adedayo Oguntuase Joseph</h1>
+                <p class="person-title">PHOTOGRAPHY &amp; VIDEOGRAPHY</p>
+            </div>
+
+            <a href="https://josedconcept.pages.dev/" target="_blank" class="business-card">
+                <div class="company-logo-frame">
+                    <img src="josedconcept.jpg" alt="JOSED CONCEPT Logo" class="company-logo-img">
+                </div>
+                <div class="business-title">JOSED CONCEPT</div>
+                <p class="business-description">
+                    JOSED CONCEPT specializes in professional photography and videography services, capturing weddings, portraits, celebrations, events, and special moments with timeless quality and creative storytelling.
+                </p>
+            </a>
+
+            <div class="action-buttons">
+                <button onclick="downloadVCard()" class="btn-action btn-primary">
+                    <svg class="btn-icon" viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    Save Contact
+                </button>
+                <a href="https://josedconcept.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn-action btn-secondary">
+                    <svg class="btn-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Visit Website
+                </a>
+            </div>
+
+            <div class="icon-grid">
+                <a href="mailto:Adedayoj11@gmail.com" class="icon-item">
+                    <div class="circle-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <span class="icon-label">E-mail</span>
+                </a>
+
+                <a href="tel:0671437242" class="icon-item">
+                    <div class="circle-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <span class="icon-label">Call</span>
+                </a>
+            </div>
+
+            <div class="credits-footer">
+                <a href="https://palexdigital.pages.dev/" target="_blank" class="credits-link">
+                    Developed By paléXdigital
+                </a>
+            </div>
+        </div>
+
+        <a href="https://wa.me/27671437242?text=Hello%20JOSED%20CONCEPT%2C%20I%20would%20like%20to%20enquire%20about%20your%20photography%20and%20videography%20services." class="floating-whatsapp" target="_blank" title="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0 0 12.04 2zm5.8 14.12c-.24.68-1.2 1.25-1.95 1.41-.51.11-1.18.2-3.43-.73-2.88-1.19-4.73-4.12-4.88-4.31-.14-.19-1.17-1.56-1.17-2.98 0-1.42.74-2.12 1.01-2.4.27-.28.59-.35.79-.35.2 0 .39.01.56.01.18 0 .42-.07.66.5.24.58.83 2.02.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.3.38-.43.51-.14.14-.29.3-.13.58.17.28.75 1.23 1.6 2 .11.1.23.2.36.3.82.65 1.51.85 1.8.99.28.14.45.12.62-.07.17-.19.72-.84.91-1.13.19-.29.39-.24.66-.14.27.1.1.72 2.12.86 2.26.14.14.24.21.28.28.03.07.03.41-.21 1.09z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        function downloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Adedayo Oguntuase Joseph
+N:Joseph;Adedayo;Oguntuase;;
+TITLE:Photography & Videography
+ORG:JOSED CONCEPT
+TEL;TYPE=CELL,VOICE:0671437242
+TEL;TYPE=CELL,WORK,WhatsApp:+27671437242
+EMAIL;TYPE=INTERNET,HOME,WORK:Adedayoj11@gmail.com
+URL;TYPE=WORK:https://josedconcept.pages.dev/
+END:VCARD`;
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Adedayo_Oguntuase_Joseph.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
